@@ -23,9 +23,14 @@ repositories {
     mavenCentral()
 }
 
+ext.versions = [
+        'swagger' : '2.9.2'
+]
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.swagger
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.swagger
     compileOnly('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
