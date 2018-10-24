@@ -14,12 +14,12 @@ public class NumberController {
     private AtomicInteger counter = new AtomicInteger();
     private AtomicInteger even = new AtomicInteger(2);
     
-    @PostMapping
+    @PostMapping("/next/int")
     public int nextInt() {
         return counter.getAndIncrement();
     }
 
-    @PostMapping
+    @PostMapping("next/even")
     public int nextEven() {
         return even.getAndUpdate(x -> x+2);
     }
