@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java-compare-and-swap.svg?branch=master)](https://travis-ci.com/mtumilowicz/java-compare-and-swap)
+
 # java-compare-and-swap
 The main goal of this project is to describe compare and swap as a way
 of resolving concurrency problems and provide basic examples 
