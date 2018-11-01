@@ -10,16 +10,16 @@ import static org.junit.Assert.assertThat;
  */
 public class FibonacciServiceTest {
 
-    private FibonacciService fibonacciService = new FibonacciService();
+    private FibonacciService service = new FibonacciService();
 
     @Test
     public void next() {
-        assertThat(fibonacciService.next(), is(1));
-        assertThat(fibonacciService.next(), is(1));
-        assertThat(fibonacciService.next(), is(2));
-        assertThat(fibonacciService.next(), is(3));
-        assertThat(fibonacciService.next(), is(5));
-        assertThat(fibonacciService.next(), is(8));
-        assertThat(fibonacciService.next(), is(13));
+        assertThat(service.next(), is(1));
+        assertThat(service.next(), is(1));
+        assertThat(service.next(), is(2));
+        assertThat(service.next(), is(3));
+        assertThat(service.next(), is(5));
+        assertThat(service.next(), is(8));
+        assertThat(service.next(), is(13));
     }
 }
