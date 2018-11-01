@@ -11,19 +11,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class NumberController {
     
-    private AtomicInteger counter = new AtomicInteger();
-    private AtomicInteger even = new AtomicInteger(2);
+    private final AtomicInteger counter = new AtomicInteger();
+    private final AtomicInteger even = new AtomicInteger(2);
+    private volatile Fibonacci fibonacci = new Fibonacci();
     
     @PostMapping("/next/int")
     public int nextInt() {
         return counter.getAndIncrement();
     }
 
-    @PostMapping("next/even")
+    @PostMapping("/next/even")
     public int nextEven() {
         return even.getAndUpdate(x -> x+2);
     }
     
-    
+    @PostMapping("/next/fibonacci")
+    public int nextFibonacci() {
+        return fibonacci.next();
+    }
     
 }
