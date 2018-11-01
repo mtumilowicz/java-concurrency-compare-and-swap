@@ -1,9 +1,9 @@
-package com.example.javacompareandswap;
+package com.example.javacompareandswap.service;
 
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by mtumilowicz on 2018-11-01.

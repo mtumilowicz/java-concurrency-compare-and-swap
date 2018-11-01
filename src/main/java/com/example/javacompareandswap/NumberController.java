@@ -1,9 +1,10 @@
 package com.example.javacompareandswap;
 
+import com.example.javacompareandswap.service.CounterService;
+import com.example.javacompareandswap.service.EvenService;
+import com.example.javacompareandswap.service.FibonacciService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by mtumilowicz on 2018-10-24.
@@ -11,18 +12,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class NumberController {
 
-    private final AtomicInteger counter = new AtomicInteger();
-    private final AtomicInteger even = new AtomicInteger(2);
+    private final CounterService counterService = new CounterService();
+    private final EvenService evenService = new EvenService();
     private volatile FibonacciService fibonacciService = new FibonacciService();
 
     @PostMapping("/next/int")
     public int nextInt() {
-        return counter.getAndIncrement();
+        return counterService.next();
     }
 
     @PostMapping("/next/even")
     public int nextEven() {
-        return even.getAndUpdate(x -> x + 2);
+        return evenService.next();
     }
 
     @PostMapping("/next/fibonacci")

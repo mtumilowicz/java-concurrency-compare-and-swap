@@ -1,4 +1,4 @@
-package com.example.javacompareandswap;
+package com.example.javacompareandswap.service;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
