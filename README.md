@@ -34,6 +34,40 @@ variable alternative is based on a microprocessor's compare-and-swap
 instruction and largely consists of the types in the 
 `java.util.concurrent.atomic` package.
 
+The easiest implementation in java will be:
+```
+class EmulatedCAS {
+    private int value;
+
+    public synchronized int getValue() {
+        return value;
+    }
+
+    public synchronized int compareAndSwap(int expectedValue, int newValue) {
+        int readValue = value;
+        if (readValue == expectedValue)
+            value = newValue;
+        return readValue;
+    }
+}
+
+class Counter {
+    private EmulatedCAS value = new EmulatedCAS();
+
+    public int getValue() {
+        return value.getValue();
+    }
+
+    public int increment() {
+        int readValue = value.getValue();
+        while (value.compareAndSwap(readValue, readValue + 1) != readValue)
+            readValue = value.getValue();
+        return readValue + 1;
+    }
+}
+```
+**Note that `increment()` is not synchronized, but compareAndSwap is.**
+
 # project description
 We provide three classes (based on Atomic variables):
 * `CounterService`
