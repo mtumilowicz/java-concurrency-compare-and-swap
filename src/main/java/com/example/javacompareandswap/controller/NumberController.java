@@ -1,4 +1,4 @@
-package com.example.javacompareandswap;
+package com.example.javacompareandswap.controller;
 
 import com.example.javacompareandswap.service.CounterService;
 import com.example.javacompareandswap.service.EvenService;

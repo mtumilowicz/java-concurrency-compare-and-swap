@@ -1,4 +1,4 @@
-package com.example.javacompareandswap;
+package com.example.javacompareandswap.infrastructure;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
