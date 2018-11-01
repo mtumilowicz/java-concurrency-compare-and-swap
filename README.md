@@ -23,14 +23,14 @@ when X's value hasn't changed while performing these steps.
 
 Java's traditional synchronization mechanism (`synchronized` keyword) 
 impacts hardware utilization and scalability:
-1. Multiple threads constantly competing for a lock is expensive because
-of frequent context switching (can take many processor cycles). 
+1. Multiple threads constantly competing for a lock = 
+frequent context switching (can take many processor cycles). 
 1. When a thread holding a lock is delayed (e.g., because of a scheduling 
 delay), no thread that requires that lock makes any progress.
 
 # java
 Java 5 introduced a synchronization alternative that offers mutual 
-exclusion combined with the performance of volatile. This atomic 
+exclusion combined with the performance of volatile. Atomic 
 variable alternative is based on a microprocessor's compare-and-swap 
 instruction and largely consists of the types in the 
 `java.util.concurrent.atomic` package.
