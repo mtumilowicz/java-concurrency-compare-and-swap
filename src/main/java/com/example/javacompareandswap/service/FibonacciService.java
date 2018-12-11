@@ -1,16 +1,16 @@
 package com.example.javacompareandswap.service;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import com.example.javacompareandswap.model.Fibonacci;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by mtumilowicz on 2018-10-24.
  */
 public final class FibonacciService {
-    private final AtomicInteger first = new AtomicInteger(0);
-    private final AtomicInteger second = new AtomicInteger(1);
+    private final AtomicReference<Fibonacci> fibonacci = new AtomicReference<>(Fibonacci.FIRST);
     
-    public synchronized int next() {
-        int firstCopy = first.getAndSet(second.get());
-        return second.getAndAccumulate(firstCopy, (actual, update) -> actual + update);
+    public int next() {
+        return fibonacci.getAndUpdate(Fibonacci::next).get();
     }
 }

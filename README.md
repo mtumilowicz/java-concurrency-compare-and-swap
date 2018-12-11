@@ -100,27 +100,47 @@ We provide three classes (based on Atomic variables):
     }    
     ```
 * `FibonacciService`
+    * we use `AtomicReference`
+        ```
+        public final class FibonacciService {
+            private final AtomicReference<Fibonacci> fibonacci = new AtomicReference<>(Fibonacci.FIRST);
+            
+            public int next() {
+                return fibonacci.getAndUpdate(Fibonacci::next).get();
+            }
+        }
+        ```
+    * `Fibonacci` class is (in fact) an immutable Tuple
+        ```
+        public final class Fibonacci {
+            public static final Fibonacci FIRST = new Fibonacci(0, 1);
+            
+            private final int left;
+            private final int right;
+            
+            private Fibonacci(int left, int right) {
+                this.left = left;
+                this.right = right;
+            }
+            
+            public Fibonacci next() {
+                return new Fibonacci(right, left + right);
+            }
+            
+            public int get() {
+                return right;
+            }
+        
+            // equals, hashcode
+        }   
+        ```
     ```
-    public final int getAndSet(int newValue) {
-        return unsafe.getAndSetInt(this, valueOffset, newValue);
-    }
-    
-    public final int getAndSetInt(Object var1, long var2, int var4) {
-        int var5;
-        do {
-            var5 = this.getIntVolatile(var1, var2);
-        } while(!this.compareAndSwapInt(var1, var2, var5, var4));
-
-        return var5;
-    }
-    
-    public final int getAndAccumulate(int x,
-                                      IntBinaryOperator accumulatorFunction) {
-        int prev, next;
+    public final V getAndUpdate(UnaryOperator<V> updateFunction) {
+        V prev, next;
         do {
             prev = get();
-            next = accumulatorFunction.applyAsInt(prev, x);
+            next = updateFunction.apply(prev);
         } while (!compareAndSet(prev, next));
         return prev;
-    }            
+    }
     ```
