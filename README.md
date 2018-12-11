@@ -134,13 +134,3 @@ We provide three classes (based on Atomic variables):
             // equals, hashcode
         }   
         ```
-    ```
-    public final V getAndUpdate(UnaryOperator<V> updateFunction) {
-        V prev, next;
-        do {
-            prev = get();
-            next = updateFunction.apply(prev);
-        } while (!compareAndSet(prev, next));
-        return prev;
-    }
-    ```
