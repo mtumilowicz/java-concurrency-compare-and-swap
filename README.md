@@ -37,6 +37,9 @@ variable alternative is based on a microprocessor's compare-and-swap
 instruction and largely consists of the types in the 
 `java.util.concurrent.atomic` package.
 
+For more info about Atomic classes in java, please refer my other
+github project: https://github.com/mtumilowicz/java11-atomic
+
 The easiest implementation in java will be:
 ```
 class EmulatedCAS {
