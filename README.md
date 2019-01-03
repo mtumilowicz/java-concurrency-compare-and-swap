@@ -7,6 +7,7 @@ of resolving concurrency problems and provide basic examples
 
 _Reference_: https://dzone.com/articles/how-cas-compare-and-swap-java  
 _Reference_: https://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html?page=3  
+_Reference_: http://tutorials.jenkov.com/java-concurrency/compare-and-swap.html
 
 # preface
 The compare-and-swap (CAS) instruction is an uninterruptible instruction 
@@ -29,6 +30,51 @@ impacts hardware utilization and scalability:
 frequent context switching (can take many processor cycles). 
 1. When a thread holding a lock is delayed (e.g., because of a scheduling 
 delay), no thread that requires that lock makes any progress.
+
+# example
+We want to make this code thread-safe
+```
+class MyLock {
+
+    private boolean locked = false;
+
+    boolean lock() {
+        if(!locked) {
+            locked = true;
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+We have two approaches:
+* synchronization using **synchronized**
+    ```
+    class MyLock {
+    
+        private boolean locked = false;
+    
+        synchronized boolean lock() {
+            if(!locked) {
+                locked = true;
+                return true;
+            }
+            return false;
+        }
+    }
+    ```
+* synchronization using **CAS**
+    ```
+    class MyLock {
+        private AtomicBoolean locked = new AtomicBoolean(false);
+    
+        boolean lock() {
+            return locked.compareAndSet(false, true);
+        }
+    
+    }
+    ```
 
 # java
 Java 5 introduced a synchronization alternative that offers mutual 
