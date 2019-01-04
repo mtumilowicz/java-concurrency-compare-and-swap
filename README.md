@@ -64,6 +64,9 @@ We have two approaches:
         }
     }
     ```
+    **note that calling synchronized (instance) method will 
+    block all other calls of synchronized (instance) methods 
+    on a given object**
 * synchronization using **CAS**
     ```
     class MyLock {
