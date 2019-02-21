@@ -11,6 +11,6 @@ public final class FibonacciService {
     private final AtomicReference<Fibonacci> fibonacci = new AtomicReference<>(Fibonacci.FIRST);
     
     public int next() {
-        return fibonacci.getAndUpdate(Fibonacci::next).get();
+        return fibonacci.updateAndGet(Fibonacci::next).get();
     }
 }

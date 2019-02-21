@@ -19,7 +19,7 @@ public final class Fibonacci {
     }
     
     public int get() {
-        return right;
+        return left;
     }
 
     @Override
