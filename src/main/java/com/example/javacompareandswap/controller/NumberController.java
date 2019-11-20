@@ -6,9 +6,6 @@ import com.example.javacompareandswap.service.FibonacciService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by mtumilowicz on 2018-10-24.
- */
 @RestController
 public class NumberController {
 

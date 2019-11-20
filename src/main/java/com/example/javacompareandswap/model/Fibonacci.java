@@ -1,8 +1,5 @@
 package com.example.javacompareandswap.model;
 
-/**
- * Created by mtumilowicz on 2018-12-11.
- */
 public final class Fibonacci {
     public static final Fibonacci FIRST = new Fibonacci(0, 1);
     

@@ -7,9 +7,6 @@ import java.util.concurrent.CompletableFuture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by mtumilowicz on 2018-11-01.
- */
 public class FibonacciServiceTest {
 
     @Test
