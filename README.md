@@ -7,7 +7,8 @@ of resolving concurrency problems and provide basic examples
 
 _Reference_: https://dzone.com/articles/how-cas-compare-and-swap-java  
 _Reference_: https://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html?page=3  
-_Reference_: http://tutorials.jenkov.com/java-concurrency/compare-and-swap.html
+_Reference_: http://tutorials.jenkov.com/java-concurrency/compare-and-swap.html  
+_Reference_: [WJUG #136 - java.util.concurrent.atomic - Tomasz Nurkiewicz](https://www.youtube.com/watch?v=5qjFq0Pj5MU)
 
 # preface
 The compare-and-swap (CAS) instruction is an uninterruptible instruction 
