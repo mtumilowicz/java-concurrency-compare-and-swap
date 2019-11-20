@@ -187,3 +187,14 @@ We provide three classes (based on Atomic variables):
             // equals, hashcode
         }   
         ```
+## digression
+note that before java 8, to perform some function on atomic value (for example - double it) 
+we have to use `compareAndSet` in an do-while loop
+```
+int prev;
+
+do {
+    prev = atom.get();
+} while (!atom.compareAndSet(prev, prev * 2));
+```
+now, we have dedicated methods in atomic classes: `updateAndGet` and `accumulateAndGet`
